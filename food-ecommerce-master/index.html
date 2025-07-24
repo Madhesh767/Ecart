@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> FOODY.COM </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- MOBILE NAV -->
+    <div class="mb-nav">
+        <div class="mb-move-item"></div>
+        <div class="mb-nav-item active">
+            <a href="#home">
+                <img src="assets/home.png"  style="height:60px;">
+            </a>
+        </div>
+        <div class="mb-nav-item">
+            <a href="#about">
+                <img src="assets/about.png" alt="முகிழ் Logo" style="height:60px;">
+            </a>
+        </div>
+        <div class="mb-nav-item">
+            <a href="#food-menu-section">
+                <img src="assets/list.png"  style="height:60px;">
+            </a>
+        </div>
+        <div class="mb-nav-item">
+            <a href="#footer">
+                <img src="assets/contact.png"  style="height:60px;">
+            </a>
+        </div>
+        
+    </div>
+    <!-- END MOBILE NAV -->
+    <!-- BACK TO TOP BTN -->
+    <a href="#home" class="back-to-top">
+        <i class="bx bxs-to-top"></i>
+    </a>
+    <!-- END BACK TO TOP BTN -->
+    <!-- TOP NAVIGATION -->
+    <div class="nav">
+        <div class="menu-wrap">
+            <a href="#home">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="முகிழ் Logo" style="height:60px;">
+                </div>
+            </a>
+            <div class="menu h-xs">
+                <a href="#home">
+                    <div class="menu-item active">
+                        முகப்பு
+                    </div>
+                </a>
+                <a href="#about">
+                    <div class="menu-item">
+                        பற்றி
+                    </div>
+                </a>
+                <a href="#food-menu-section">
+                    <div class="menu-item">
+                        பட்டியல்
+                    </div>
+                </a>
+                <a href="#footer">
+                    <div class="menu-item">
+                        தொடர்பு 
+                    </div>
+                </a>
+                
+            </div>
+            <div class="cart-header" style="position:relative; margin-left:20px; cursor:pointer;">
+                <i class="bx bx-cart-alt" style="font-size:35px;"></i>
+
+                <span id="cartCount" 
+                    style="position:absolute; top:-5px; right:-5px; background:red; color:white; font-size:12px;
+                            width:18px; height:18px; display:flex; justify-content:center; align-items:center;
+                            border-radius:50%;">0</span>
+            </div>
+
+
+           
+        </div>
+    </div>
+    <!-- END TOP NAVIGATION -->
+
+    <!-- UPDATED POPUP MODAL -->
+<div id="cartModal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:999;">
+    <div style="background:#fff; padding:20px; border-radius:10px; width:320px; text-align:center;">
+        <img id="modalProductImage" src="" 
+             style="width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+        
+        <h3 id="modalProductName" style="margin-bottom:5px;"></h3>
+        <p id="modalProductDesc" style="color:#666; font-size:14px; margin-bottom:10px;">
+            <!-- You can set default descriptions here dynamically -->
+        </p>
+        <p style="color:green; margin-bottom:5px;">
+            Price: ₹<span id="modalProductPrice">0.00</span>
+        </p>
+
+        <!-- Weight Selection -->
+        <label style="font-weight:bold;">Select Weight:</label>
+        <select id="modalWeight" 
+                style="width:100%; padding:5px; margin:8px 0; border:1px solid #ccc; border-radius:4px;">
+            <option value="0.25">1/4 Kg</option>
+            <option value="0.5">1/2 Kg</option>
+            <option value="1" selected>1 Kg</option>
+        </select>
+
+        <!-- Quantity -->
+        <label style="font-weight:bold;">Quantity:</label>
+        <input type="number" id="modalQuantity" min="1" value="1" 
+               style="width:60px; padding:5px; margin:10px 0;">
+
+        <div style="margin-top:15px;">
+            <button id="confirmAddToCart" 
+                    style="background:#08a737; color:#fff; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;">
+                Add to Cart
+            </button>
+            <button id="closeModal" 
+                    style="background:#ccc; color:#000; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin-left:5px;">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
+    <!-- SECTION HOME -->
+    <section id="home" class="fullheight align-items-center bg-img bg-img-fixed"
+        style="background-image: url(img/ff2.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-xs-12">
+                    <div class="slogan">
+                        <h1 class="left-to-right play-on-scroll">
+                            முகிழ்⸙
+                        </h1>
+                        <h3 class="left-to-right play-on-scroll delay-1" style="font-weight:400; font-size:20px; color:#08a737;">
+                            – சுவையும் நினைவுகளும் இணையும் இடம்
+                        </h3>
+                        <p class="left-to-right play-on-scroll delay-2">
+                           முகிழ் என்பது 100% இயற்கைச் சுவையுடன், எந்தவித ரசாயனப் பொருட்களும் இல்லாமல் தயாரிக்கப்படும் ஆரோக்கியமான உணவுப் பொருட்கள் வழங்கும் ஒரு ஸ்டார்ட்அப் ஆகும். 
+                           நம் தயாரிப்புகளில் பாரம்பரிய முறையில் தயாரிக்கப்படும் சத்துமாவு ( Health Mix ), குக்கீஸ், மற்றும் ஆரோக்கிய உணவுப் பொருட்கள் இடம்பெறும்.
+                           இயற்கையை நேசிக்கும் ஒவ்வொருவருக்கும், சுவை மற்றும் ஆரோக்கியம் சேர்ந்த சிறந்த தேர்வு .
+                        </p>
+                        <p class="left-to-right play-on-scroll delay-2">
+                            – முகிழ்
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION HOME -->
+    <!-- SECION ABOUT -->
+    <section class="about fullheight align-items-center" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-7 h-xs">
+                    <img src="assets/dan-gold-4_jhDO54BYg-unsplash.jpg" alt=""
+                        class="fullwidth left-to-right play-on-scroll">
+                </div>
+                <div class="col-5 col-xs-12 align-items-center">
+                    <div class="about-slogan right-to-left play-on-scroll">
+                        <h3>
+                            <span class="primary-color">உங்களுக்காக</span> சுவைமிகு  <span class="primary-color">நினைவுகளை </span>
+                            நாங்கள்  <span class="primary-color">உருவாக்குகிறோம்</span>
+                        </h3>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END SECION ABOUT -->
+    <!-- FOOD MENU SECTION -->
+    <section class="align-items-center bg-img bg-img-fixed" id="food-menu-section"
+        style="background-image: url(assets/katherine-chase-4MMK78S7eyk-unsplash.jpg);">
+        <div class="container">
+            <div class="food-menu">
+                <h1>
+                    <span class="primary-color">பட்டியல்</span> 
+                </h1>
+               
+                <div class="food-category">
+                    <div class="zoom play-on-scroll">
+                        <button class="active" data-food-type="all">
+                            All Products
+                        </button>
+                    </div>
+                    <div class="zoom play-on-scroll delay-2">
+                        <button data-food-type="salad">
+                            சிறுதானியங்கள்
+                        </button>
+                    </div>
+                    <div class="zoom play-on-scroll delay-4">
+                        <button data-food-type="lorem">
+                            Lorem
+                        </button>
+                    </div>
+                    <div class="zoom play-on-scroll delay-6">
+                        <button data-food-type="ipsum">
+                            Ipsum
+                        </button>
+                    </div>
+                    <div class="zoom play-on-scroll delay-8">
+                        <button data-food-type="dolor">
+                            Dolor
+                        </button>
+                    </div>
+                </div>
+
+                <div class="food-item-wrap all">
+                    <div class="food-item salad-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url(assets/Thinai.png);"></div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                       தினை 
+                                    </h3>
+                                    <span>
+                                        ₹120.00
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class="bx bx-cart-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item salad-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/Kambu.png');"></div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        கம்பு  
+                                    </h3>
+                                    <span>
+                                        ₹120.00
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item salad-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/varagu.png');">
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        வரகு 
+                                    </h3>
+                                    <span>
+                                        ₹120.00
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item salad-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/Saamai.png');">
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        சாமை 
+                                    </h3>
+                                    <span>
+                                        ₹120.00
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item salad-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/Kuthiraivaali.png');">
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        குதிரைவாலி  
+                                    </h3>
+                                    <span>
+                                        ₹120.00
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item lorem-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/sina-piryae-bBzjWthTqb8-unsplash.jpg');"></div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        Lorem ipsum
+                                    </h3>
+                                    <span>
+                                        120$
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item dolor-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/carly-jayne-Lv174o7fn7Y-unsplash.jpg');"></div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        Lorem ipsum
+                                    </h3>
+                                    <span>
+                                        120$
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item salad-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/raagi.png');"></div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        ராகி 
+                                    </h3>
+                                    <span>
+                                        ₹120.00
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item lorem-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/sina-piryae-bBzjWthTqb8-unsplash.jpg');"></div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        Lorem ipsum
+                                    </h3>
+                                    <span>
+                                        120$
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item dolor-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/carly-jayne-Lv174o7fn7Y-unsplash.jpg');"></div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        Lorem ipsum
+                                    </h3>
+                                    <span>
+                                        120$
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- POPUP MODAL -->
+<div id="cartModal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:999;">
+    <div style="background:#fff; padding:20px; border-radius:10px; width:300px; text-align:center;">
+        <h3 id="modalProductName" style="margin-bottom:10px;"></h3>
+        <p id="modalProductPrice" style="color:green; margin-bottom:10px;"></p>
+
+        <label style="font-weight:bold;">Quantity:</label>
+        <input type="number" id="modalQuantity" min="1" value="1" 
+               style="width:60px; padding:5px; margin:10px 0;">
+
+        <label style="font-weight:bold;">Weight:</label>
+        <select id="modalWeight" style="padding:5px; margin:10px 0; width:100%;">
+            <option value="1/4 Kg">1/4 Kg</option>
+            <option value="1/2 Kg">1/2 Kg</option>
+            <option value="1 Kg" selected>1 Kg</option>
+        </select>
+
+        <div style="margin-top:15px;">
+            <button id="confirmAddToCart" 
+                    style="background:#08a737; color:#fff; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;">
+                Add to Cart
+            </button>
+            <button id="closeModal" 
+                    style="background:#ccc; color:#000; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin-left:5px;">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
+
+    <!-- END FOOD MENU SECTION -->
+    <!-- TESTIMONIAL SECTION -->
+   
+  
+    <!-- FOOTER SECTION -->
+<section class="footer" id="footer"
+style="background-color: #fff; padding: 40px 0; text-align: center;">
+    <div class="container">
+        <h1 style="font-size: 24px; font-weight: bold; color: #000;">
+            எங்களை தொடர்பு கொள்ள <i class='bx bxs-phone-call' style="color:#d9534f;"></i>
+        </h1>
+        <p style="color: green; font-weight: bold; margin: 5px 0 15px; font-size: 18px;">
+            ● Online
+        </p>
+        <p style="color: #7a7a7a; margin: 10px 0 20px; font-size: 16px;">
+            திட்டம் குறித்து கலந்துரையாட அல்லது வணக்கம் சொல்ல விரும்புகிறீர்களா? எங்கள் அஞ்சல் பெட்டி எப்போதும் திறந்திருக்கும்.
+        </p>
+        <p style="font-size: 28px; font-weight: bold; color:#000;">
+            <a href="tel:+919942999627" style="color:#000; text-decoration:none;">
+                +91 99429 99627
+            </a>
+        </p>
+        <p style="font-size: 22px; color:#666;">
+            <a href="mailto:mughizhorganic@gmail.com" style="color:#666; text-decoration:none;">
+                mughizhorganic@gmail.com
+            </a>
+        </p>
+
+        <!-- Social Media Icons -->
+        <div style="margin-top: 20px;">
+            
+            <a href="mailto:mughizhorganic@gmail.com" style="display:inline-block; margin:0 10px;">
+                <img src="assets/mail.png" style="width:45px; height:45px; border-radius:50%;">
+            </a>
+            <a href="https://www.instagram.com/mughizh_organic?igsh=MTNpZWJoM2F1eGxsaA==" target="_blank" style="display:inline-block; margin:0 10px;">
+                <img src="assets/insta.png" style="width:45px; height:45px; border-radius:50%;">
+            </a>
+            <a href="https://wa.me/919942999627?text=Hello%20Mughizh%20Organic!" target="_blank" style="display:inline-block; margin:0 10px;">
+                <img src="assets/whatsapp.png" style="width:45px; height:45px; border-radius:50%;">
+            </a>
+            
+        </div>
+    </div>
+</section>
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background:#fff; padding:20px; border-radius:10px; width:300px; text-align:center;">
+    <h3 style="margin-bottom:10px;">Enter Your Details</h3>
+    
+    <input type="text" id="customerName" placeholder="Your Name" 
+           style="width:90%; padding:8px; margin-bottom:5px; border:1px solid #ccc; border-radius:5px;">
+    <small id="nameError" style="color:red; display:none; font-size:12px;">Please enter your name</small>
+    <br>
+
+    <input type="text" id="customerPhone" placeholder="Phone Number" 
+           style="width:90%; padding:8px; margin-bottom:5px; border:1px solid #ccc; border-radius:5px;">
+    <small id="phoneError" style="color:red; display:none; font-size:12px;">Please enter your phone number</small>
+    <br>
+
+    <button id="confirmCheckout" 
+            style="background:#08a737; color:#fff; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin-top:10px;">
+      Confirm Order
+    </button>
+    <button id="cancelCheckout" 
+            style="background:#ccc; color:#000; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin-left:5px;">
+      Cancel
+    </button>
+  </div>
+</div>
+
+<div id="cartPanel" 
+     style="position:fixed; top:0; right:-400px; width:350px; height:100%; background:#fff; 
+            box-shadow:-2px 0 8px rgba(0,0,0,0.2); z-index:9999; transition:right 0.3s ease; padding:15px; overflow-y:auto;">
+    <h3 style="text-align:center; border-bottom:1px solid #ddd; padding-bottom:10px;">🛒 Your Cart</h3>
+    <div id="cartItems"></div>
+    <h4 style="margin-top:15px; text-align:center;">Total: ₹<span id="cartTotal">0.00</span></h4>
+    <button id="checkoutBtn" 
+            style="width:100%; background:#08a737; color:#fff; padding:10px; border:none; border-radius:5px; margin-top:10px; cursor:pointer;">
+        Checkout
+    </button>
+    <button id="closeCart" 
+            style="width:100%; background:#ccc; color:#000; padding:10px; border:none; border-radius:5px; margin-top:5px; cursor:pointer;">
+        Close
+    </button>
+</div>
+<!-- ✅ SUCCESS POPUP -->
+<div id="successPopup" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background:#fff; padding:20px; border-radius:10px; width:300px; text-align:center;">
+    <h3 style="color:green;">✅ Your order is placed successfully!</h3>
+    <button id="closeSuccess" 
+            style="margin-top:15px; background:#08a737; color:#fff; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;">
+      OK
+    </button>
+  </div>
+</div>
+
+
+<!-- END FOOTER SECTION -->
+
+    <!-- END FOOTER SECTION -->
+
+    <script src="js/main.js"></script>
+    <footer style="background-color:#f5f5f5; padding: 15px 0; text-align:center; font-size:14px; color:#555; border-top:1px solid #ddd;">
+    © 2025 Mughizh Organic. All Rights Reserved. | Privacy Policy
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("kZBFh29P4McclruaH"); // Replace with your public key
+  })();
+</script>
+
+</body>
+
+</html>
