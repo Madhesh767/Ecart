@@ -75,10 +75,64 @@
                 </a>
                 
             </div>
+            <div class="cart-header" style="position:relative; margin-left:20px; cursor:pointer;">
+                <i class="bx bx-cart-alt" style="font-size:35px;"></i>
+
+                <span id="cartCount" 
+                    style="position:absolute; top:-5px; right:-5px; background:red; color:white; font-size:12px;
+                            width:18px; height:18px; display:flex; justify-content:center; align-items:center;
+                            border-radius:50%;">0</span>
+            </div>
+
+
            
         </div>
     </div>
     <!-- END TOP NAVIGATION -->
+
+    <!-- UPDATED POPUP MODAL -->
+<div id="cartModal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:999;">
+    <div style="background:#fff; padding:20px; border-radius:10px; width:320px; text-align:center;">
+        <img id="modalProductImage" src="" 
+             style="width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+        
+        <h3 id="modalProductName" style="margin-bottom:5px;"></h3>
+        <p id="modalProductDesc" style="color:#666; font-size:14px; margin-bottom:10px;">
+            <!-- You can set default descriptions here dynamically -->
+        </p>
+        <p style="color:green; margin-bottom:5px;">
+            Price: ₹<span id="modalProductPrice">0.00</span>
+        </p>
+
+        <!-- Weight Selection -->
+        <label style="font-weight:bold;">Select Weight:</label>
+        <select id="modalWeight" 
+                style="width:100%; padding:5px; margin:8px 0; border:1px solid #ccc; border-radius:4px;">
+            <option value="0.25">1/4 Kg</option>
+            <option value="0.5">1/2 Kg</option>
+            <option value="1" selected>1 Kg</option>
+        </select>
+
+        <!-- Quantity -->
+        <label style="font-weight:bold;">Quantity:</label>
+        <input type="number" id="modalQuantity" min="1" value="1" 
+               style="width:60px; padding:5px; margin:10px 0;">
+
+        <div style="margin-top:15px;">
+            <button id="confirmAddToCart" 
+                    style="background:#08a737; color:#fff; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;">
+                Add to Cart
+            </button>
+            <button id="closeModal" 
+                    style="background:#ccc; color:#000; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin-left:5px;">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
     <!-- SECTION HOME -->
     <section id="home" class="fullheight align-items-center bg-img bg-img-fixed"
         style="background-image: url(img/ff2.jpg);">
@@ -134,13 +188,9 @@
         <div class="container">
             <div class="food-menu">
                 <h1>
-                    What will <span class="primary-color">you</span> eat today?
+                    <span class="primary-color">பட்டியல்</span> 
                 </h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque alias aliquam eveniet, iure
-                    praesentium dicta ex dolorum inventore itaque minus repudiandae, odio provident? Velit architecto
-                    natus expedita non? Odio, dolorum.
-                </p>
+               
                 <div class="food-category">
                     <div class="zoom play-on-scroll">
                         <button class="active" data-food-type="all">
@@ -149,7 +199,7 @@
                     </div>
                     <div class="zoom play-on-scroll delay-2">
                         <button data-food-type="salad">
-                            Salad
+                            சிறுதானியங்கள்
                         </button>
                     </div>
                     <div class="zoom play-on-scroll delay-4">
@@ -174,15 +224,15 @@
                         <div class="item-wrap bottom-up play-on-scroll">
                             <div class="item-img">
                                 <div class="img-holder bg-img"
-                                    style="background-image: url(assets/anh-nguyen-kcA-c3f_3FE-unsplash.jpg);"></div>
+                                    style="background-image: url(assets/Thinai.png);"></div>
                             </div>
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                        Lorem ipsum
+                                       தினை 
                                     </h3>
                                     <span>
-                                        120$
+                                        ₹120.00
                                     </span>
                                 </div>
                                 <div class="cart-btn">
@@ -192,19 +242,19 @@
                         </div>
                     </div>
 
-                    <div class="food-item lorem-type">
+                    <div class="food-item salad-type">
                         <div class="item-wrap bottom-up play-on-scroll">
                             <div class="item-img">
                                 <div class="img-holder bg-img"
-                                    style="background-image: url('assets/sina-piryae-bBzjWthTqb8-unsplash.jpg');"></div>
+                                    style="background-image: url('assets/Kambu.png');"></div>
                             </div>
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                        Lorem ipsum
+                                        கம்பு  
                                     </h3>
                                     <span>
-                                        120$
+                                        ₹120.00
                                     </span>
                                 </div>
                                 <div class="cart-btn">
@@ -214,20 +264,66 @@
                         </div>
                     </div>
 
-                    <div class="food-item ipsum-type">
+                    <div class="food-item salad-type">
                         <div class="item-wrap bottom-up play-on-scroll">
                             <div class="item-img">
                                 <div class="img-holder bg-img"
-                                    style="background-image: url('assets/jonathan-farber-OCNqOLeCwOc-unsplash.jpg');">
+                                    style="background-image: url('assets/varagu.png');">
                                 </div>
                             </div>
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                        Lorem ipsum
+                                        வரகு 
                                     </h3>
                                     <span>
-                                        120$
+                                        ₹120.00
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item salad-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/Saamai.png');">
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        சாமை 
+                                    </h3>
+                                    <span>
+                                        ₹120.00
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class='bx bx-cart-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-item salad-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/Kuthiraivaali.png');">
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        குதிரைவாலி  
+                                    </h3>
+                                    <span>
+                                        ₹120.00
                                     </span>
                                 </div>
                                 <div class="cart-btn">
@@ -285,15 +381,15 @@
                         <div class="item-wrap bottom-up play-on-scroll">
                             <div class="item-img">
                                 <div class="img-holder bg-img"
-                                    style="background-image: url('assets/anh-nguyen-kcA-c3f_3FE-unsplash.jpg');"></div>
+                                    style="background-image: url('assets/raagi.png');"></div>
                             </div>
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                        Lorem ipsum
+                                        ராகி 
                                     </h3>
                                     <span>
-                                        120$
+                                        ₹120.00
                                     </span>
                                 </div>
                                 <div class="cart-btn">
@@ -350,6 +446,39 @@
             </div>
         </div>
     </section>
+    <!-- POPUP MODAL -->
+<div id="cartModal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:999;">
+    <div style="background:#fff; padding:20px; border-radius:10px; width:300px; text-align:center;">
+        <h3 id="modalProductName" style="margin-bottom:10px;"></h3>
+        <p id="modalProductPrice" style="color:green; margin-bottom:10px;"></p>
+
+        <label style="font-weight:bold;">Quantity:</label>
+        <input type="number" id="modalQuantity" min="1" value="1" 
+               style="width:60px; padding:5px; margin:10px 0;">
+
+        <label style="font-weight:bold;">Weight:</label>
+        <select id="modalWeight" style="padding:5px; margin:10px 0; width:100%;">
+            <option value="1/4 Kg">1/4 Kg</option>
+            <option value="1/2 Kg">1/2 Kg</option>
+            <option value="1 Kg" selected>1 Kg</option>
+        </select>
+
+        <div style="margin-top:15px;">
+            <button id="confirmAddToCart" 
+                    style="background:#08a737; color:#fff; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;">
+                Add to Cart
+            </button>
+            <button id="closeModal" 
+                    style="background:#ccc; color:#000; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin-left:5px;">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
+
     <!-- END FOOD MENU SECTION -->
     <!-- TESTIMONIAL SECTION -->
    
@@ -381,7 +510,7 @@ style="background-color: #fff; padding: 40px 0; text-align: center;">
         <!-- Social Media Icons -->
         <div style="margin-top: 20px;">
             
-            <a href="mailto:madhesh@pitfall.in" style="display:inline-block; margin:0 10px;">
+            <a href="mailto:mughizhorganic@gmail.com" style="display:inline-block; margin:0 10px;">
                 <img src="assets/mail.png" style="width:45px; height:45px; border-radius:50%;">
             </a>
             <a href="https://www.instagram.com/mughizh_organic?igsh=MTNpZWJoM2F1eGxsaA==" target="_blank" style="display:inline-block; margin:0 10px;">
@@ -394,6 +523,62 @@ style="background-color: #fff; padding: 40px 0; text-align: center;">
         </div>
     </div>
 </section>
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background:#fff; padding:20px; border-radius:10px; width:300px; text-align:center;">
+    <h3 style="margin-bottom:10px;">Enter Your Details</h3>
+    
+    <input type="text" id="customerName" placeholder="Your Name" 
+           style="width:90%; padding:8px; margin-bottom:5px; border:1px solid #ccc; border-radius:5px;">
+    <small id="nameError" style="color:red; display:none; font-size:12px;">Please enter your name</small>
+    <br>
+
+    <input type="text" id="customerPhone" placeholder="Phone Number" 
+           style="width:90%; padding:8px; margin-bottom:5px; border:1px solid #ccc; border-radius:5px;">
+    <small id="phoneError" style="color:red; display:none; font-size:12px;">Please enter your phone number</small>
+    <br>
+
+    <button id="confirmCheckout" 
+            style="background:#08a737; color:#fff; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin-top:10px;">
+      Confirm Order
+    </button>
+    <button id="cancelCheckout" 
+            style="background:#ccc; color:#000; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin-left:5px;">
+      Cancel
+    </button>
+  </div>
+</div>
+
+<div id="cartPanel" 
+     style="position:fixed; top:0; right:-400px; width:350px; height:100%; background:#fff; 
+            box-shadow:-2px 0 8px rgba(0,0,0,0.2); z-index:9999; transition:right 0.3s ease; padding:15px; overflow-y:auto;">
+    <h3 style="text-align:center; border-bottom:1px solid #ddd; padding-bottom:10px;">🛒 Your Cart</h3>
+    <div id="cartItems"></div>
+    <h4 style="margin-top:15px; text-align:center;">Total: ₹<span id="cartTotal">0.00</span></h4>
+    <button id="checkoutBtn" 
+            style="width:100%; background:#08a737; color:#fff; padding:10px; border:none; border-radius:5px; margin-top:10px; cursor:pointer;">
+        Checkout
+    </button>
+    <button id="closeCart" 
+            style="width:100%; background:#ccc; color:#000; padding:10px; border:none; border-radius:5px; margin-top:5px; cursor:pointer;">
+        Close
+    </button>
+</div>
+<!-- ✅ SUCCESS POPUP -->
+<div id="successPopup" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background:#fff; padding:20px; border-radius:10px; width:300px; text-align:center;">
+    <h3 style="color:green;">✅ Your order is placed successfully!</h3>
+    <button id="closeSuccess" 
+            style="margin-top:15px; background:#08a737; color:#fff; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;">
+      OK
+    </button>
+  </div>
+</div>
+
 
 <!-- END FOOTER SECTION -->
 
@@ -403,6 +588,13 @@ style="background-color: #fff; padding: 40px 0; text-align: center;">
     <footer style="background-color:#f5f5f5; padding: 15px 0; text-align:center; font-size:14px; color:#555; border-top:1px solid #ddd;">
     © 2025 Mughizh Organic. All Rights Reserved. | Privacy Policy
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("kZBFh29P4McclruaH"); // Replace with your public key
+  })();
+</script>
+
 </body>
 
 </html>
